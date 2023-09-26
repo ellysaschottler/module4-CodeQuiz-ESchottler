@@ -88,7 +88,10 @@
                 <h2>You have completed the Quiz!</h2>
                 <div class = "answers">
                     <p>Your final score is <div id="final-score"></div>. </p>
-                    <p>Enter initials: <button id="submit">Submit</button></p>
+                    <form>
+                        <label>Enter initials:</label>
+                        <input type="text" id="initials"/>
+                    </form> <button id="submit">Submit</button>
                    
                 </div>
             </div>
@@ -97,8 +100,7 @@
             <div class = "question-card" id="high-scores">
                 <h2>High Scores</h2>
                 <div class = "answers">
-                    <p>You have 75 seconds to answer these 5 coding questions! </p>
-                    <p>An incorrect answer will reduce your time by 15 seconds.</p>
+                    <ul id="high-scores-list">
                     <button >Go Back </button> <button>Clear High Scores</button>
                 </div>
             </div>
