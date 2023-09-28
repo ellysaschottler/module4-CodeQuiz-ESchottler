@@ -21,7 +21,8 @@ Todo notes:
         if incorrect -15 seconds from the timer
         also move on to display the next question
 
-    
+    on click event when choosing last answer - go to the next section but also stop or hide the timer.
+
     store input initials with score
     display initials with score on high scores page
     go back button takes back to the starter

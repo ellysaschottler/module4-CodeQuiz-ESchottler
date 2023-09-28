@@ -1,10 +1,9 @@
-var rightWrong = document.querySelector(".right-wrong");
-rightWrong.textContent = "right!";
-rightWrong.setAttribute("style", "background-color:green; color:white;")
 
+// create element for div id final-score
+var scoreEl = document.querySelector("#final-score");
+scoreEl=0;
 
-
-function append Right! or Wrong! 
+//Trying to display right or wrong after an answer option 1
 
 var rightEl = document.createElement("li")
 var wrongEl = document.createElement("li")
@@ -15,23 +14,19 @@ wrongEl.textContent= "Wrong."
 rightEl.setAttribute("style", "background-color:green; color:white");
 wrongEl.setAttribute("style", "background-color:orange; color black");
 
-if (on click item class is right){ 
-document."#right-wrong".appendChild(rightEl);
+rightEl.addEventListener("click", function(){
+    document.".right-wrong".appendChild(rightEl);
+    scoreEl+=5;
+    //pseudo code line above
+})
 
-}else{
-document."#right-wrong".appendChild(wrongEl);
-}
-
-
-
-// function timesUp (){
-//     alert("Game over, time's up!");
-
-// }
-// var gameOver = setTimeout(timesUp, 75000)
+wrongEl.addEventListener("click", function(){
+    document.".right-wrong".appendChild(wrongEl);
+    timeLeft-=15;
+    //pseudo code line above
+})
 
 
-// countdown from 75 seconds (still need to add ability to penalize 15 seconds on wrong answers)
 var timerEl = document.getElementById("timer");
 timerEl.setAttribute("style","color:purple");
 
@@ -39,7 +34,7 @@ function countdown() {
     var timeLeft = 75;
     var timeInterval = setInterval(function() {
         if (timeLeft >1) {    
-            timerEl.textContent = timeLeft + "seconds";
+            timerEl.textContent = "Time: " + timeLeft;
             timeLeft--;
     } else {
         timerEl.textContent= "";
