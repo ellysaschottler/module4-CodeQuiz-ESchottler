@@ -1,3 +1,5 @@
+ <!-- working on displaying questions one at a time with javascript; backup html if needed:  -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,13 +10,13 @@
 </head>
 <body>
     <header>
-        <div id = "high-scores"></div>
+        <div id = "high-scores"><a href="#high-scores">High Scores</a></div>
         <div id = "timer"></div>
     </header>
 
     <main>
         <div class = "centering">
-            <div class = "question-card" id="starter">
+            <div id="starter">
                 <h2>Coding Quiz Challenge.</h2>
                 <div class = "content">
                     <p>You have 75 seconds to answer these 5 coding questions! </p>
@@ -24,12 +26,19 @@
             </div>
         </div>
         <div class = "centering">
-            <div id="container">
-<!-- Javascript to update questions to here. -->
+            <div id = "question-card">
+                <!-- <h2>My question goes here.</h2>
+                <div class = "content" id="answer-container">
+                    <button id="choice-1">1. Answer here. </button>
+                    <button id="choice-2">2. Answer here. </button>
+                    <button id="choice-3">3. Answer here. </button>
+                    <button id="choice-4">4. Answer here. </button>
+                </div>
+                <ul class="right-wrong"></ul> -->
             </div>
         </div>
         <div class = "centering">
-            <div class = "question-card" id="finished">
+            <div id="finished">
                 <h2>You have completed the Quiz!</h2>
                 <div class = "content">
                     <p>Your final score is: <div id="final-score"></div>. </p>
@@ -42,11 +51,11 @@
             </div>
         </div>
         <div class = "centering">
-            <div class = "question-card" id="high-scores">
+            <div id="high-scores">
                 <h2>High Scores</h2>
                 <div class = "content">
                     <ul id="high-scores-list">
-                    <button id ="go-back">Go Back </button> <button id ="clear-high-scores">Clear High Scores</button>
+                    <button id ="go-back">Go Back</button> <button id ="clear-high-scores">Clear High Scores</button>
                 </div>
             </div>
         </div>

@@ -1,10 +1,15 @@
+var startButton = document.querySelector("#start");
+var answerButtons = document.querySelector("#answer-container");
+var submitInitialsButton = document.querySelector("#submit");
+var goBackButton = document.querySelector("#go-back");
+var clearHighScoresButton = document.querySelector("#clear-high-scores");
+
 var scoreEl = document.querySelector("#final-score");
 scoreEl=0;
 
 var timeLeft;
 
-
-var questions= [
+var questionsArray= [
     {
         question: "What is HTML?",
         correctAnswer: 2,  //index 2 of possible answers
@@ -57,18 +62,19 @@ var questions= [
     }    
 ]
 
-//After these are on the page we will need to click them and check right or wrong
-var answers = document.querySelector("#answer-container");
+
+
+//After a question/answer set is on the page we will need to click them and check right or wrong
 
 
 var rightWrongSpot = document.querySelector("#right-wrong"); // #right-wrong is now a class, have to change to ID in my html
 var rightWrongEl = document.createElement("li");
 rightWrongSpot.appendChild(rightWrongEl);
 
-answers.addEventListener("click", function(event){
+answerButtons.addEventListener("click", function(event){
     var answerClicked = event.target;
 
-    if (indexOf(answerClicked) === questions[1]){  // figure out how to grab the value of correct answer here
+    if (indexOf(answerClicked) === questionsArray.correctAnswer[1]){  // figure out how to grab the value of correct answer here
         scoreEl+=5;
         rightWrongEl.textContent= "Right!";
     } else {
@@ -79,12 +85,6 @@ answers.addEventListener("click", function(event){
 
 
 // create element for div id final-score
-
-
-console.log("Correct: ", )
-var startBtn = document.querySelector('#start');
-var singleBtn = document.querySelector('button');
-var allButtons = document.querySelectorAll('button');  // --> [<butoon id="start">Start, <button]
 
 // Grab Reference to each BUtton 
 
@@ -102,20 +102,6 @@ choiceContainer.addEventListener("click", function(event){
     timeLeft-=15;
     //pseudo code line above
 })
-/*
-btn1.addEventListener("click", function(event){
-    console.log("Event Target: ", event.target)
-    //  document.".right-wrong".appendChild(wrongEl);
-    timeLeft-=15;
-    //pseudo code line above
-})
-btn2.addEventListener("click", function(event){
-    console.log("Event Target: ", event.target)
-  //  document.".right-wrong".appendChild(wrongEl);
-    timeLeft-=15;
-//pseudo code line above
-})
-*/
 
 
 // Timer
@@ -140,3 +126,38 @@ function countdown() {
 
 // tested countdown - function works: countdown()
 
+
+
+//Write a function to write this content using the questionsArray each time a question is answered.
+
+//Create question
+var questionCard = document.getElementById("question-card");
+var questionHereEl = document.createElement("h2");
+questionHereEl.textContent= (`${currentQuestion.question}`);
+questionCard.appendChild(questionHereEl);
+
+//Add styling
+var contentDivEl = document.createElement("div")
+contentDivEl.className = "content";
+contentDivEl.idName = "answer-container";
+questionHereEl.appendChild(contentDivEl);
+
+//Creates answer 1
+var answerButton1El = document.createElement("button");
+answerButton1El.textContent= (`${currentQuestion.possibleAnswers[0]}`)
+contentDivEl.appendChild(answerButton1El)
+
+//Creates answer 2
+var answerButton2El = document.createElement("button");
+answerButton2El.textContent= (`${currentQuestion.possibleAnswers[1]}`)
+contentDivEl.appendChild(answerButton2El)
+
+//Creates answer 3
+var answerButton3El = document.createElement("button");
+answerButton3El.textContent= (`${currentQuestion.possibleAnswers[2]}`)
+contentDivEl.appendChild(answerButton3El)
+
+//Creates answer 4
+var answerButton4El = document.createElement("button");
+answerButton4El.textContent= (`${currentQuestion.possibleAnswers[3]}`)
+contentDivEl.appendChild(answerButton4El)
