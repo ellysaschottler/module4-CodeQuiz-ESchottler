@@ -12,25 +12,29 @@
         <div id = "timer"></div>
     </header>
 
+
+
     <main>
         <div class = "centering">
             <div class = "question-card" id="starter">
                 <h2>Coding Quiz Challenge.</h2>
-                <div class = "answers">
+                <div class = "content">
                     <p>You have 75 seconds to answer these 5 coding questions! </p>
                     <p>An incorrect answer will reduce your time by 15 seconds.</p>
                     <button id="start">Start Quiz</button>
                 </div>
             </div>
         </div>
+        <!-- create element div -->
         <div class = "centering">
+            <!-- set its innerHTML to this: with a template string (`<h2>${question.question}</h2> ...`)-->
             <div class = "question-card" id="question1">
                 <h2>My question goes here.</h2>
-                <div class = "answers">
-                    <button class = "incorrect">1. Answer here. </button>
-                    <button class = "correct">2. Answer here. </button>
-                    <button class = "incorrect">3. Answer here. </button>
-                    <button class = "incorrect">4. Answer here. </button>
+                <div class = "content" id="answer-container">
+                    <button class = "incorrect" id="choice-1">1. Answer here. </button>
+                    <button class = "correct" id="choice-2">2. Answer here. </button>
+                    <button class = "incorrect"id="choice-3" >3. Answer here. </button>
+                    <button class = "incorrect"id="choice-4" >4. Answer here. </button>
                 </div>
                 <ul class="right-wrong"></ul>
             </div>
@@ -38,7 +42,7 @@
         <div class = "centering">
             <div class = "question-card" id="question2">
                 <h2>My question goes here.</h2>
-                <div class = "answers">
+                <div class = "content">
                     <button class = "correct">1. Answer here. </button>
                     <button class = "incorrect">2. Answer here. </button>
                     <button class = "incorrect">3. Answer here. </button>
@@ -50,7 +54,7 @@
         <div class = "centering">
             <div class = "question-card" id="question3">
                 <h2>My question goes here.</h2>
-                <div class = "answers">
+                <div class = "content">
                     <button class = "incorrect">1. Answer here. </button>
                     <button class = "incorrect">2. Answer here. </button>
                     <button class = "correct">3. Answer here. </button>
@@ -62,7 +66,7 @@
         <div class = "centering">
             <div class = "question-card" id="question4">
                 <h2>My question goes here.</h2>
-                <div class = "answers">
+                <div class = "content">
                     <button class = "incorrect">1. Answer here. </button>
                     <button class = "incorrect">2. Answer here. </button>
                     <button class = "incorrect">3. Answer here. </button>
@@ -74,7 +78,7 @@
         <div class = "centering">
             <div class = "question-card" id="question5">
                 <h2>My question goes here.</h2>
-                <div class = "answers">
+                <div class = "content">
                     <button class = "correct">1. Answer here. </button>
                     <button class = "incorrect">2. Answer here. </button>
                     <button class = "incorrect">3. Answer here. </button>
@@ -86,9 +90,9 @@
         <div class = "centering">
             <div class = "question-card" id="finished">
                 <h2>You have completed the Quiz!</h2>
-                <div class = "answers">
+                <div class = "content">
                     <p>Your final score is: <div id="final-score"></div>. </p>
-                    <form>
+                    <form id="initials">
                         <label>Enter initials:</label>
                         <input type="text" id="initials"/>
                     </form> <button id="submit">Submit</button>
@@ -99,7 +103,7 @@
         <div class = "centering">
             <div class = "question-card" id="high-scores">
                 <h2>High Scores</h2>
-                <div class = "answers">
+                <div class = "content">
                     <ul id="high-scores-list">
                     <button id ="go-back">Go Back </button> <button id ="clear-high-scores">Clear High Scores</button>
                 </div>
