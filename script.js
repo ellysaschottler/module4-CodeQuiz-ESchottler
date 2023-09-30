@@ -9,99 +9,94 @@ scoreEl=0;
 
 var timeLeft;
 
-var questionsArray= [
-    {
-        question: "What is HTML?",
-        correctAnswer: 2,  //index 2 of possible answers
-        possibleAnswers: [
-            "1. Hat Tom Mark Lion",
-            "2. HotTopicMarvelLocal",
-            "3. Hyper Text Markup Language",
-            "4. Hotel Train Monkey Link"
-        ]
-    },
-    {
-        question: "Commonly used data types do not include:",
-        correctAnswer: 2,
-        possibleAnswers: [
-            "1. strings",
-            "2. booleans",
-            "3. alerts",
-            "4. numbers"
-        ]
-    },
-    {
-        question:"The condition in an if / else statement is enclosed with _______.",
-        correctAnswer: 1,
-        possibleAnswers: [
-            "1. quotes",
-            "2. curly brackets",
-            "3. parenthesis",
-            "4. square brackets"
-        ]
-    },
-    {
-        question: "Arrays in JavaScript can be used to store _____.",
-        correctAnswer: 3,
-        possibleAnswers: [
-            "1. numbers and strings",
-            "2. other arrays",
-            "3. booleans",
-            "4. all of the above"
-        ]
-    },
-    {
-        question: "String values must be enclosed within ______ when being assigned to variables.",
-        correctAnswer: 2,
-        possibleAnswers: [
-            "1. commas",
-            "2. curly brackets",
-            "3. quotes",
-            "4. parenthesis"
-        ]
-    }    
-]
+//Re-writing question/answer sets - nested arrays getting too confusing
 
+var question1Array= [
+    "What is HTML?",
+    "1. Hat Tom Mark Lion",
+    "2. HotTopicMarvelLocal",
+    "3. Hyper Text Markup Language",
+    "4. Hotel Train Monkey Link",
+    3,  //index 3 is the correct answer
+];
+var question2Array= [
+    "Commonly used data types do not include:",
+    "1. strings",
+    "2. booleans",
+    "3. alerts",
+    "4. numbers",
+    3,
+];
+var question3Array= [
+    "The condition in an if / else statement is enclosed with _______.",
+    "1. quotes",
+    "2. curly brackets",
+    "3. parenthesis",
+    "4. square brackets",
+    2,
+];
+var question4Array= [
+    "Arrays in JavaScript can be used to store _____.",
+    "1. numbers and strings",
+    "2. other arrays",
+    "3. booleans",
+    "4. all of the above",
+    4,        
+];
+var question5Array= [
+    "String values must be enclosed within ______ when being assigned to variables.",
+    "1. commas",
+    "2. curly brackets",
+    "3. quotes",
+    "4. parenthesis",
+    3,
+];
+
+
+//Populating the question and answers - will make a function for each question and call one function after the next
+var questionHere = document.getElementById("question-here");
+var getQuestionText = question1Array[0];
+questionHere.textContent = getQuestionText;
+
+//Add text to buttons
+var firstAnswerHere = document.getElementById("choice-1");
+var getFirstAnswerText = question1Array[1];
+firstAnswerHere.textContent = getFirstAnswerText;
+
+var secondAnswerHere = document.getElementById("choice-2");
+var getSecondAnswerText = question1Array[2];
+secondAnswerHere.textContent = getSecondAnswerText;
+
+var thirdAnswerHere = document.getElementById("choice-3");
+var getThirdAnswerText = question1Array[3];
+thirdAnswerHere.textContent = getThirdAnswerText;
+
+var fourthAnswerHere = document.getElementById("choice-4");
+var getFourthAnswerText = question1Array[4];
+fourthAnswerHere.textContent = getFourthAnswerText;
 
 
 //After a question/answer set is on the page we will need to click them and check right or wrong
 
 
-var rightWrongSpot = document.querySelector("#right-wrong"); // #right-wrong is now a class, have to change to ID in my html
-var rightWrongEl = document.createElement("li");
-rightWrongSpot.appendChild(rightWrongEl);
+// var rightWrongSpot = document.querySelector("#right-wrong"); // #right-wrong is now a class, have to change to ID in my html
+// var rightWrongEl = document.createElement("li");
+// rightWrongSpot.appendChild(rightWrongEl);
 
-answerButtons.addEventListener("click", function(event){
-    var answerClicked = event.target;
+// answerButtons.addEventListener("click", function(event){
+//     event.stopPropagation();
+//     var answerClicked = event.target;
 
-    if (indexOf(answerClicked) === questionsArray.correctAnswer[1]){  // figure out how to grab the value of correct answer here
-        scoreEl+=5;
-        rightWrongEl.textContent= "Right!";
-    } else {
-        timeLeft-=15;
-        rightWrongEl.textContent= "Wrong!";
-    }  
-})
-
+//     if (indexOf(answerClicked) === questionsArray.correctAnswer[1]){  // figure out how to grab the value of correct answer here
+//         scoreEl+=5;
+//         rightWrongEl.textContent= "Right!";
+//     } else {
+//         timeLeft-=15;
+//         rightWrongEl.textContent= "Wrong!";
+//     }  
+// })
 
 // create element for div id final-score
-
-// Grab Reference to each BUtton 
-
-var choiceContainer = document.getElementById('answer-container')
-var btn1 = document.getElementById('choice-1')
-var btn2 = document.getElementById('choice-2')
-
-choiceContainer.addEventListener("click", function(event){
-    // prefvent the default behavior
-    event.stopPropagation();
-    console.log("Event Target: ", event.target)
-    console.log("Event Value: ", event.target.textContent)
-    console.log("Event Target: ", event.target.value)
-    //  document.".right-wrong".appendChild(wrongEl);
-    timeLeft-=15;
-    //pseudo code line above
-})
 
 
 // Timer
@@ -128,36 +123,15 @@ function countdown() {
 
 
 
-//Write a function to write this content using the questionsArray each time a question is answered.
 
-//Create question
-var questionCard = document.getElementById("question-card");
-var questionHereEl = document.createElement("h2");
-questionHereEl.textContent= (`${currentQuestion.question}`);
-questionCard.appendChild(questionHereEl);
 
-//Add styling
-var contentDivEl = document.createElement("div")
-contentDivEl.className = "content";
-contentDivEl.idName = "answer-container";
-questionHereEl.appendChild(contentDivEl);
 
-//Creates answer 1
-var answerButton1El = document.createElement("button");
-answerButton1El.textContent= (`${currentQuestion.possibleAnswers[0]}`)
-contentDivEl.appendChild(answerButton1El)
 
-//Creates answer 2
-var answerButton2El = document.createElement("button");
-answerButton2El.textContent= (`${currentQuestion.possibleAnswers[1]}`)
-contentDivEl.appendChild(answerButton2El)
 
-//Creates answer 3
-var answerButton3El = document.createElement("button");
-answerButton3El.textContent= (`${currentQuestion.possibleAnswers[2]}`)
-contentDivEl.appendChild(answerButton3El)
 
-//Creates answer 4
-var answerButton4El = document.createElement("button");
-answerButton4El.textContent= (`${currentQuestion.possibleAnswers[3]}`)
-contentDivEl.appendChild(answerButton4El)
+
+//Add data-set info to flag which one is correct
+
+
+
+  
