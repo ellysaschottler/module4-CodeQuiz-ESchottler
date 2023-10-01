@@ -75,6 +75,8 @@ var fourthAnswerHere = document.getElementById("choice-4");
 var getFourthAnswerText = question1Array[4];
 fourthAnswerHere.textContent = getFourthAnswerText;
 
+var setRight1 = thirdAnswerHere.setAttribute("data-right", "Right")
+
 
 // create element for div id final-score
 
@@ -105,22 +107,24 @@ function countdown() {
 //Add data-set info to flag which one is correct
 
 
-//After a question/answer set is on the page we will need to click them and check right or wrong
-
-// maybe add data-right="Right" to correct answer button
+//Noting if the answer is right or wrong
 
 var allAnswers = document.querySelector("#answer-container");
 
 allAnswers.addEventListener("click", function(event){
     event.stopPropagation();
     var answerClicked = event.target;
-    var answerRight = answerClicked.dataset.right;  // still need to add data-right="Right" to each right answer
-    if (answerRight == "Right"){
+ // still need to add data-right="Right" to each right answer
+    if (answerClicked.dataset.right == "Right"){
         var setRightText = "Right!";
+        // could add a color change here with rightwrong.setAttribute("style, "color:green");
         rightWrong.textContent = setRightText;
+        scoreEl+=5;
     } else {
         var setWrongText = "Wrong.";
+// could add a color change here with rightwrong.setAttribute("style, "color:red");
         rightWrong.textContent = setWrongText;
+        timeLeft-=15;
     }
 })
 
