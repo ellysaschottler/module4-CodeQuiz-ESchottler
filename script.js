@@ -102,15 +102,14 @@ function countdown() {
 // tested countdown - function works: countdown()
 
 
-
 //Add data-set info to flag which one is correct
-
 
 
 //After a question/answer set is on the page we will need to click them and check right or wrong
 
 // maybe add data-right="Right" to correct answer button
-var allAnswers = document.querySelector".answer-container";
+
+var allAnswers = document.querySelector("#answer-container");
 
 allAnswers.addEventListener("click", function(event){
     event.stopPropagation();
