@@ -140,3 +140,21 @@ function countdown() {
 // var answerButton4El = document.createElement("button");
 // answerButton4El.textContent= (`${currentQuestion.possibleAnswers[3]}`)
 // contentDivEl.appendChild(answerButton4El)
+
+// old version of check right/wrong:
+// var rightWrongSpot = document.querySelector("#right-wrong"); // #right-wrong is now a class, have to change to ID in my html
+// var rightWrongEl = document.createElement("li");
+// rightWrongSpot.appendChild(rightWrongEl);
+
+// answerButtons.addEventListener("click", function(event){
+//     event.stopPropagation();
+//     var answerClicked = event.target;
+
+//     if (indexOf(answerClicked) === questionsArray.correctAnswer[1]){  // figure out how to grab the value of correct answer here
+//         scoreEl+=5;
+//         rightWrongEl.textContent= "Right!";
+//     } else {
+//         timeLeft-=15;
+//         rightWrongEl.textContent= "Wrong!";
+//     }  
+// })

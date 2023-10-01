@@ -3,21 +3,21 @@ var answerButtons = document.querySelector("#answer-container");
 var submitInitialsButton = document.querySelector("#submit");
 var goBackButton = document.querySelector("#go-back");
 var clearHighScoresButton = document.querySelector("#clear-high-scores");
-
+var rightWrong = document.querySelectorAll(".right-wrong")
 var scoreEl = document.querySelector("#final-score");
 scoreEl=0;
 
 var timeLeft;
 
 //Re-writing question/answer sets - nested arrays getting too confusing
-
+// question arrays are formated: [0]=question, [1]=the first answer option,  same for [2], [3], [4]; [5]= the index of the correct answer
 var question1Array= [
     "What is HTML?",
     "1. Hat Tom Mark Lion",
     "2. HotTopicMarvelLocal",
     "3. Hyper Text Markup Language",
     "4. Hotel Train Monkey Link",
-    3,  //index 3 is the correct answer
+    3,
 ];
 var question2Array= [
     "Commonly used data types do not include:",
@@ -25,7 +25,7 @@ var question2Array= [
     "2. booleans",
     "3. alerts",
     "4. numbers",
-    3,
+    3, 
 ];
 var question3Array= [
     "The condition in an if / else statement is enclosed with _______.",
@@ -33,7 +33,7 @@ var question3Array= [
     "2. curly brackets",
     "3. parenthesis",
     "4. square brackets",
-    2,
+    2, 
 ];
 var question4Array= [
     "Arrays in JavaScript can be used to store _____.",
@@ -41,7 +41,7 @@ var question4Array= [
     "2. other arrays",
     "3. booleans",
     "4. all of the above",
-    4,        
+    4, 
 ];
 var question5Array= [
     "String values must be enclosed within ______ when being assigned to variables.",
@@ -49,7 +49,7 @@ var question5Array= [
     "2. curly brackets",
     "3. quotes",
     "4. parenthesis",
-    3,
+    3, 
 ];
 
 
@@ -75,26 +75,6 @@ var fourthAnswerHere = document.getElementById("choice-4");
 var getFourthAnswerText = question1Array[4];
 fourthAnswerHere.textContent = getFourthAnswerText;
 
-
-//After a question/answer set is on the page we will need to click them and check right or wrong
-
-
-// var rightWrongSpot = document.querySelector("#right-wrong"); // #right-wrong is now a class, have to change to ID in my html
-// var rightWrongEl = document.createElement("li");
-// rightWrongSpot.appendChild(rightWrongEl);
-
-// answerButtons.addEventListener("click", function(event){
-//     event.stopPropagation();
-//     var answerClicked = event.target;
-
-//     if (indexOf(answerClicked) === questionsArray.correctAnswer[1]){  // figure out how to grab the value of correct answer here
-//         scoreEl+=5;
-//         rightWrongEl.textContent= "Right!";
-//     } else {
-//         timeLeft-=15;
-//         rightWrongEl.textContent= "Wrong!";
-//     }  
-// })
 
 // create element for div id final-score
 
@@ -123,15 +103,25 @@ function countdown() {
 
 
 
-
-
-
-
-
-
-
 //Add data-set info to flag which one is correct
 
 
 
-  
+//After a question/answer set is on the page we will need to click them and check right or wrong
+
+// maybe add data-right="Right" to correct answer button
+var allAnswers = document.querySelector".answer-container";
+
+allAnswers.addEventListener("click", function(event){
+    event.stopPropagation();
+    var answerClicked = event.target;
+    var answerRight = answerClicked.dataset.right;  // still need to add data-right="Right" to each right answer
+    if (answerRight == "Right"){
+        var setRightText = "Right!";
+        rightWrong.textContent = setRightText;
+    } else {
+        var setWrongText = "Wrong.";
+        rightWrong.textContent = setWrongText;
+    }
+})
+
