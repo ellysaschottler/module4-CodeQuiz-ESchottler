@@ -15,6 +15,7 @@ var timerEl = document.getElementById("timer");
 var timeLeft;
 var currentQuestionIndex = 0;
 var initialsEl = document.querySelector("#initials");
+var timeInterval
 var questionArray = [
     {
         question: "What is HTML?",
@@ -69,15 +70,15 @@ timerEl.setAttribute("style","color:purple");
 
 function countdown() {
     timeLeft = 75;
-    var timeInterval = setInterval(function() {
+    timeInterval = setInterval(function() {
         if (timeLeft >1) {    
             timerEl.textContent = "Time: " + timeLeft;
             timeLeft--;
     } else {
         timerEl.textContent= "";
         clearTimeout(timeInterval);
-        alert("Time's up!");;
-        questionsOver()
+        alert("Time's up!");
+        questionsOver();
         }
     }, 1000);
 }
@@ -103,28 +104,21 @@ function answerCheck(event) {
         timeLeft-=15;
     }
 
-    if (currentQuestionIndex < questionArray.length){
+    if (currentQuestionIndex < questionArray.length-1){
         currentQuestionIndex ++
-        questionCardPopulate ()
+        questionCardPopulate ();
     } else {
-        questionsOver()
+        questionsOver();
+        clearInterval(timeInterval);
     }
 }
 
 // hides question area and moves on to the End game page
-function questionsOver() {
+function questionsOver(){
     questionCardEl.setAttribute("style", "display:none;");
     finishedCardEl.setAttribute("style", "display:flex;");
 }
 
-
-// if (currentQuestionIndex < questionArray.length){
-//     currentQuestionIndex ++
-//     questionCardPopulate ()
-// } else {
-// questionCardEl.setAttribute("style", "display:none;");
-// finishedCardEl.setAttribute("style", "display:flex;");
-// }
 
 function questionCardPopulate(){
     var questionHere = document.getElementById("question-here");
