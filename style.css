@@ -10,9 +10,16 @@ h2 {
     color: black;
 }
 
+/* display property to hide parts of the page, dynamically changed by Javascript */
+#starter {
+    display:flex;
+}
+#question-card, #finished, #high-scores {
+    display:none;
+}
+
 #question-card, #starter, #finished, #high-scores {
     width: 60%;
-    display: flex;
     flex-direction: column;
     justify-content:flex-start;
     background-color:aquamarine;
@@ -38,3 +45,5 @@ h2 {
     justify-content:center;
     align-items:center;
 }
+
+
