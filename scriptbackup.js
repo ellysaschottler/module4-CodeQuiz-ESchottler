@@ -158,3 +158,183 @@ function countdown() {
 //         rightWrongEl.textContent= "Wrong!";
 //     }  
 // })
+
+
+
+
+// rewrote question array again and function to populate them to be reusable:
+// function question1(){
+//     //Populating the question and answers - 
+//     var questionHere = document.getElementById("question-here");
+//     var getQuestionText = question1Array[0];
+//     questionHere.textContent = getQuestionText;
+
+//     //Add text to buttons
+//     var firstAnswerHere = document.getElementById("choice-1");
+//     var getFirstAnswerText = question1Array[1];
+//     firstAnswerHere.textContent = getFirstAnswerText;
+
+//     var secondAnswerHere = document.getElementById("choice-2");
+//     var getSecondAnswerText = question1Array[2];
+//     secondAnswerHere.textContent = getSecondAnswerText;
+
+//     var thirdAnswerHere = document.getElementById("choice-3");
+//     var getThirdAnswerText = question1Array[3];
+//     thirdAnswerHere.textContent = getThirdAnswerText;
+
+//     var fourthAnswerHere = document.getElementById("choice-4");
+//     var getFourthAnswerText = question1Array[4];
+//     fourthAnswerHere.textContent = getFourthAnswerText;
+
+//     var setRight1 = thirdAnswerHere.setAttribute("data-right", "Right")
+//     return
+// }
+
+// function question2(){
+//     //Populating the question and answers - 
+//     var questionHere = document.getElementById("question-here");
+//     var getQuestionText = question2Array[0];
+//     questionHere.textContent = getQuestionText;
+    
+//     //Add text to buttons
+//     var firstAnswerHere = document.getElementById("choice-1");
+//     var getFirstAnswerText = question2Array[1];
+//     firstAnswerHere.textContent = getFirstAnswerText;
+    
+//     var secondAnswerHere = document.getElementById("choice-2");
+//     var getSecondAnswerText = question2Array[2];
+//     secondAnswerHere.textContent = getSecondAnswerText;
+    
+//     var thirdAnswerHere = document.getElementById("choice-3");
+//     var getThirdAnswerText = question2Array[3];
+//     thirdAnswerHere.textContent = getThirdAnswerText;
+    
+//     var fourthAnswerHere = document.getElementById("choice-4");
+//     var getFourthAnswerText = question2Array[4];
+//     fourthAnswerHere.textContent = getFourthAnswerText;
+    
+//     var setRight1 = thirdAnswerHere.setAttribute("data-right", "Right")
+//     return
+// }
+
+// function question3(){
+//     //Populating the question and answers - 
+//     var questionHere = document.getElementById("question-here");
+//     var getQuestionText = question3Array[0];
+//     questionHere.textContent = getQuestionText;
+        
+//      //Add text to buttons
+//     var firstAnswerHere = document.getElementById("choice-1");
+//     var getFirstAnswerText = question3Array[1];
+//     firstAnswerHere.textContent = getFirstAnswerText;
+        
+//     var secondAnswerHere = document.getElementById("choice-2");
+//     var getSecondAnswerText = question3Array[2];
+//     secondAnswerHere.textContent = getSecondAnswerText;
+        
+//     var thirdAnswerHere = document.getElementById("choice-3");
+//     var getThirdAnswerText = question3Array[3];
+//         thirdAnswerHere.textContent = getThirdAnswerText;
+        
+//     var fourthAnswerHere = document.getElementById("choice-4");
+//     var getFourthAnswerText = question3Array[4];
+//     fourthAnswerHere.textContent = getFourthAnswerText;
+        
+//     var setRight1 = secondAnswerHere.setAttribute("data-right", "Right")      
+//     return 
+// }    
+// function question4(){
+//     //Populating the question and answers - 
+//     var questionHere = document.getElementById("question-here");
+//     var getQuestionText = question4Array[0];
+//     questionHere.textContent = getQuestionText;
+    
+//     //Add text to buttons
+//     var firstAnswerHere = document.getElementById("choice-1");
+//     var getFirstAnswerText = question4Array[1];
+//     firstAnswerHere.textContent = getFirstAnswerText;
+    
+//     var secondAnswerHere = document.getElementById("choice-2");
+//     var getSecondAnswerText = question4Array[2];
+//     secondAnswerHere.textContent = getSecondAnswerText;
+    
+//     var thirdAnswerHere = document.getElementById("choice-3");
+//     var getThirdAnswerText = question4Array[3];
+//     thirdAnswerHere.textContent = getThirdAnswerText;
+    
+//     var fourthAnswerHere = document.getElementById("choice-4");
+//     var getFourthAnswerText = question4Array[4];
+//     fourthAnswerHere.textContent = getFourthAnswerText;
+    
+//     var setRight1 = fourthAnswerHere.setAttribute("data-right", "Right") 
+//     return
+// }
+// function question5(){
+//     //Populating the question and answers - 
+//     var questionHere = document.getElementById("question-here");
+//     var getQuestionText = question5Array[0];
+//     questionHere.textContent = getQuestionText;
+    
+//     //Add text to buttons
+//     var firstAnswerHere = document.getElementById("choice-1");
+//     var getFirstAnswerText = question5Array[1];
+//     firstAnswerHere.textContent = getFirstAnswerText;
+    
+//     var secondAnswerHere = document.getElementById("choice-2");
+//     var getSecondAnswerText = question5Array[2];
+//     secondAnswerHere.textContent = getSecondAnswerText;
+    
+//     var thirdAnswerHere = document.getElementById("choice-3");
+//     var getThirdAnswerText = question5Array[3];
+//     thirdAnswerHere.textContent = getThirdAnswerText;
+    
+//     var fourthAnswerHere = document.getElementById("choice-4");
+//     var getFourthAnswerText = question5Array[4];
+//     fourthAnswerHere.textContent = getFourthAnswerText;
+    
+//     var setRight1 = thirdAnswerHere.setAttribute("data-right", "Right") 
+//     return
+// }
+
+//Re-writing question/answer sets - nested arrays getting too confusing
+// question arrays are formated: [0]=question, [1]=the first answer option,  same for [2], [3], [4]; [5]= the index of the correct answer
+// var question1Array= [
+//     "What is HTML?",
+//     "1. Hat Tom Mark Lion",
+//     "2. HotTopicMarvelLocal",
+//     "3. Hyper Text Markup Language",
+//     "4. Hotel Train Monkey Link",
+//     3,
+// ];
+// var question2Array= [
+//     "Commonly used data types do not include:",
+//     "1. strings",
+//     "2. booleans",
+//     "3. alerts",
+//     "4. numbers",
+//     3, 
+// ];
+// var question3Array= [
+//     "The condition in an if / else statement is enclosed with _______.",
+//     "1. quotes",
+//     "2. curly brackets",
+//     "3. parenthesis",
+//     "4. square brackets",
+//     2, 
+// ];
+// var question4Array= [
+//     "Arrays in JavaScript can be used to store _____.",
+//     "1. numbers and strings",
+//     "2. other arrays",
+//     "3. booleans",
+//     "4. all of the above",
+//     4, 
+// ];
+// var question5Array= [
+//     "String values must be enclosed within ______ when being assigned to variables.",
+//     "1. commas",
+//     "2. curly brackets",
+//     "3. quotes",
+//     "4. parenthesis",
+//     3, 
+// ];

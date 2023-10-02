@@ -7,11 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Quiz</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap"
+      rel="stylesheet"
+    />
 </head>
 <body>
     <header>
         <div id = "high-scores-link"><a href="#high-scores">High Scores</a></div>
         <div id = "timer"></div>
+        <div id = "right-wrong"></div>
+        <div class = "score"></div>
     </header>
 
     <main>
@@ -34,20 +42,18 @@
                     <button id="choice-3">3. Answer here. </button>
                     <button id="choice-4">4. Answer here. </button>
                 </div>
-                <ul class="right-wrong"></ul>
             </div>
         </div>
         <div class = "centering">
             <div id="finished">
                 <h2>You have completed the Quiz!</h2>
                 <div class = "content">
-                    <p>Your final score is: <div id="final-score"></div>. </p>
+                    <p>Your final score is: <div id="score"></div>. </p>
                     <form id="initials">
                         <label>Enter initials:</label>
                         <input type="text" id="initials"/>
                     </form> <button id="submit">Submit</button>
                 </div>
-                <ul class="right-wrong"></ul>
             </div>
         </div>
         <div class = "centering">
