@@ -14,8 +14,8 @@ h2 {
 #starter {
     display:flex;
 }
-#question-card, #finished, #high-scores {
-    display:flex; 
+#question-card, #finished, #high-score-card {
+    display:none; 
     /* switch back to display:none after testing */
 }
 
