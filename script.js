@@ -76,8 +76,8 @@ function countdown() {
     } else {
         timerEl.textContent= "";
         clearTimeout(timeInterval);
-        alert("Time's up!");
-// replace alert Times up with function to go to the high-scores page to submit score.  
+        alert("Time's up!");;
+        questionsOver()
         }
     }, 1000);
 }
@@ -107,9 +107,12 @@ function answerCheck(event) {
         currentQuestionIndex ++
         questionCardPopulate ()
     } else {
-        questionCardEl.setAttribute("style", "display:none;");
-        finishedCardEl.setAttribute("style", "display:flex;");
+        questionsOver()
     }
+}
+function questionsOver() {
+    questionCardEl.setAttribute("style", "display:none;");
+    finishedCardEl.setAttribute("style", "display:flex;");
 }
 
 
