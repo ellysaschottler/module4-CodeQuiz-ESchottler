@@ -10,69 +10,11 @@ var starterCardEl = document.querySelector("#starter");
 var questionCardEl = document.querySelector("#question-card");
 var finishedCardEl = document.querySelector("#finished");
 var highScoresCardEl = document.querySelector("#high-scores");
-var timeLeft;
-
-startButtonEl.addEventListener("click",function(event){
-    event.stopPropagation();
-    starterCardEl.setAttribute("style", "display:none;");
-    questionCardEl.setAttribute("style", "display:flex;");
-    countdown();
-    questionCardPopulate();
-}
-)
-// Timer
-
+var allAnswersEl = document.querySelector("#answer-container");
 var timerEl = document.getElementById("timer");
-timerEl.setAttribute("style","color:purple");
-
-function countdown() {
-    timeLeft = 75;
-    var timeInterval = setInterval(function() {
-        if (timeLeft >1) {    
-            timerEl.textContent = "Time: " + timeLeft;
-            timeLeft--;
-    } else {
-        timerEl.textContent= "";
-        clearTimeout(timeInterval);
-        alert("Time's up!");
-// replace alert Times up with function to go to the high-scores page to submit score.  
-        }
-    }, 1000);
-}
-
-//Function to check if the answer is right or wrong and to add points or subtract time accordingly
-
-
-
-function answerCheck(){
-var allAnswers = document.querySelector("#answer-container");
-
-allAnswers.addEventListener("click", function(event){
-    event.stopPropagation();
-    var answerClicked = event.target;
-
-    if (answerClicked.textContent == questionArray[currentQuestionIndex].correct){
-        var setRightText = "Right!";
-        rightWrongEl.setAttribute("style", "color:green");
-        rightWrongEl.textContent = setRightText;
-        scoreEl+=5;
-    } else {
-        var setWrongText = "Wrong.";
-        rightWrongEl.setAttribute("style", "color:red");
-        rightWrongEl.textContent = setWrongText;
-        timeLeft-=15;
-    }
-    if (currentQuestionIndex < 5){
-        currentQuestionIndex ++
-        questionCardPopulate ()
-    } else {
-    questionCardEl.setAttribute("style", "display:none;");
-    finishedCardEl.setAttribute("style", "display:flex;");
-    }
-})
-}
-
-//Rewriting questions as a larger array to loop through
+var timeLeft;
+var currentQuestionIndex = 0;
+var initialsEl = document.querySelector("#initials");
 var questionArray = [
     {
         question: "What is HTML?",
@@ -110,7 +52,79 @@ var questionArray = [
         a4: "4. parenthesis",
         correct: "3. quotes"}
     ]
-var currentQuestionIndex = 0;
+
+//Start the game
+
+startButtonEl.addEventListener("click",function(event){
+    event.stopPropagation();
+    starterCardEl.setAttribute("style", "display:none;");
+    questionCardEl.setAttribute("style", "display:flex;");
+    countdown();
+    questionCardPopulate();
+}
+)
+// Timer
+
+timerEl.setAttribute("style","color:purple");
+
+function countdown() {
+    timeLeft = 75;
+    var timeInterval = setInterval(function() {
+        if (timeLeft >1) {    
+            timerEl.textContent = "Time: " + timeLeft;
+            timeLeft--;
+    } else {
+        timerEl.textContent= "";
+        clearTimeout(timeInterval);
+        alert("Time's up!");
+// replace alert Times up with function to go to the high-scores page to submit score.  
+        }
+    }, 1000);
+}
+
+//Function to check if the answer is right or wrong and to add points or subtract time accordingly
+
+function answerCheck(){
+allAnswersEl.addEventListener("click", function(event){
+    event.stopPropagation();
+    var answerClicked = event.target;
+
+    if (answerClicked.textContent == questionArray[currentQuestionIndex].correct){
+        var setRightText = "Right!";
+        rightWrongEl.setAttribute("style", "color:green");
+        rightWrongEl.textContent = setRightText;
+        scoreEl+=5;
+        if (currentQuestionIndex < questionArray.length){
+            currentQuestionIndex ++
+            questionCardPopulate ()
+        } else {
+        questionCardEl.setAttribute("style", "display:none;");
+        finishedCardEl.setAttribute("style", "display:flex;");
+        }
+    } else {
+        var setWrongText = "Wrong.";
+        rightWrongEl.setAttribute("style", "color:red");
+        rightWrongEl.textContent = setWrongText;
+        timeLeft-=15;
+        if (currentQuestionIndex < questionArray.length){
+            currentQuestionIndex ++
+            questionCardPopulate ()
+        } else {
+        questionCardEl.setAttribute("style", "display:none;");
+        finishedCardEl.setAttribute("style", "display:flex;");
+        }
+    })
+}
+
+  
+    // if (currentQuestionIndex < questionArray.length){
+    //     currentQuestionIndex ++
+    //     questionCardPopulate ()
+    // } else {
+    // questionCardEl.setAttribute("style", "display:none;");
+    // finishedCardEl.setAttribute("style", "display:flex;");
+    // }
+
 
     function questionCardPopulate(){
 
@@ -137,5 +151,15 @@ var currentQuestionIndex = 0;
             answerCheck()
         }
 
+submitInitialsButtonEl.addEventListener("click", function(e){
+    e.preventDefault();
+    localStorage.setItem("initials", initialsEl.value)  
+})
+var postInitialsEl = document.createElement("li");
+    
+postInitialsEl.textContent = localStorage.getItem("initials")
 
-    // on click event localStorage.clear() to clear high score table
+clearHighScoresButtonEl.addEventListener("click", function(){
+    localStorage.clear()
+
+})
