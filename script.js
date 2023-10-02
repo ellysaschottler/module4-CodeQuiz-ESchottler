@@ -4,7 +4,7 @@ var submitInitialsButtonEl = document.querySelector("#submit");
 var goBackButtonEl = document.querySelector("#go-back");
 var clearHighScoresButtonEl = document.querySelector("#clear-high-scores");
 var rightWrongEl = document.querySelector("#right-wrong")
-var scoreEl = document.querySelectorAll(".score");
+var scoreEl = document.querySelector("#score");
 var score =0;
 var starterCardEl = document.querySelector("#starter");
 var questionCardEl = document.querySelector("#question-card");
@@ -51,7 +51,7 @@ var questionArray = [
         a3: "3. quotes",
         a4: "4. parenthesis",
         correct: "3. quotes"}
-    ]
+]
 
 //Start the game
 
@@ -95,7 +95,7 @@ function answerCheck(event) {
         rightWrongEl.setAttribute("style", "color:green");
         rightWrongEl.textContent = setRightText;
         score +=5;
-        scoreEl.textContent = score;
+        scoreEl.textContent = "Score: " + score;
     } else {
         var setWrongText = "Wrong.";
         rightWrongEl.setAttribute("style", "color:red");
@@ -110,6 +110,8 @@ function answerCheck(event) {
         questionsOver()
     }
 }
+
+// hides question area and moves on to the End game page
 function questionsOver() {
     questionCardEl.setAttribute("style", "display:none;");
     finishedCardEl.setAttribute("style", "display:flex;");
