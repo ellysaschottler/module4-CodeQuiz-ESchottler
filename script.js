@@ -9,7 +9,8 @@ var score =0;
 var starterCardEl = document.querySelector("#starter");
 var questionCardEl = document.querySelector("#question-card");
 var finishedCardEl = document.querySelector("#finished");
-var highScoresCardEl = document.querySelector("#high-scores");
+var highScoresCardEl = document.querySelector("#high-scores-card");
+var highScoreEl = document.querySelector("#high-scores")
 var allAnswersEl = document.querySelector("#answer-container");
 var timerEl = document.getElementById("timer");
 var timeLeft;
@@ -32,7 +33,7 @@ var questionArray = [
         a4: "4. numbers",
         correct: "3. alerts"},
     {
-        question: "The condition in an if  else statement is enclosed with _______.",
+        question: "The condition in an if / else statement is enclosed with _______.",
         a1: "1. quotes",
         a2: "2. curly brackets",
         a3: "3. parenthesis",
@@ -92,13 +93,13 @@ function answerCheck(event) {
     var answerClicked = event.target;
 
     if (answerClicked.textContent == questionArray[currentQuestionIndex].correct){
-        var setRightText = "Right!";
+        var setRightText = "Previous answer: Right!";
         rightWrongEl.setAttribute("style", "color:green");
         rightWrongEl.textContent = setRightText;
         score +=5;
         scoreEl.textContent = "Score: " + score;
     } else {
-        var setWrongText = "Wrong.";
+        var setWrongText = "Previous Answer: Wrong.";
         rightWrongEl.setAttribute("style", "color:red");
         rightWrongEl.textContent = setWrongText;
         timeLeft-=15;
@@ -145,17 +146,24 @@ function questionCardPopulate(){
 //Store initials
 submitInitialsButtonEl.addEventListener("click", function(e){
     e.preventDefault();
-    localStorage.setItem("initials", initialsEl.value)  
+    localStorage.setItem("initials", initialsEl.value) 
+    finishedCardEl.setAttribute("style", "display:none;");
+    highScoresCardEl.setAttribute("style", "display:flex;");
 })
 
 // Post initials
 var postInitialsEl = document.createElement("li");
     
 postInitialsEl.textContent = localStorage.getItem("initials")
-highScoresCardEl.appendChild(postInitialsEl)
+highScoreEl.appendChild(postInitialsEl)
 
 //Clear High Scores
 clearHighScoresButtonEl.addEventListener("click", function(){
     localStorage.clear()
 
 })
+
+// Go Back
+goBackButtonEl.addEventListener("click", function(){
+location.reload(true);
+} )

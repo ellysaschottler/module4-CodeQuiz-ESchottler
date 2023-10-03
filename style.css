@@ -14,12 +14,12 @@ h2 {
 #starter {
     display:flex;
 }
-#question-card, #finished, #high-score-card {
+#question-card, #finished, #high-scores-card {
     display:none; 
     /* switch back to display:none after testing */
 }
 
-#question-card, #starter, #finished, #high-scores {
+#question-card, #starter, #finished, #high-scores-card {
     width: 60%;
     flex-direction: column;
     justify-content:flex-start;
