@@ -11,6 +11,7 @@ var questionCardEl = document.querySelector("#question-card");
 var finishedCardEl = document.querySelector("#finished");
 var highScoresCardEl = document.querySelector("#high-scores-card");
 var highScoreEl = document.querySelector("#high-scores")
+var highScoreLinkEl = document.querySelector("#high-scores-link")
 var allAnswersEl = document.querySelector("#answer-container");
 var timerEl = document.getElementById("timer");
 var timeLeft;
@@ -167,3 +168,9 @@ clearHighScoresButtonEl.addEventListener("click", function(){
 goBackButtonEl.addEventListener("click", function(){
 location.reload(true);
 } )
+
+// High Score link
+highScoreLinkEl.addEventListener("click", function(){
+    starterCardEl.setAttribute("style", "display:none;");
+    highScoresCardEl.setAttribute("style", "display:flex;");
+})
