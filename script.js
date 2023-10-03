@@ -12,12 +12,12 @@ var finishedCardEl = document.querySelector("#finished");
 var highScoresCardEl = document.querySelector("#high-scores-card");
 var finalScoreEl = document.querySelector("#final-score")
 var highScoreLinkEl = document.querySelector("#high-scores-link");
-var highScoresList = document.querySelector("#high-scores-list");
+var highScoresListEl = document.querySelector("#high-scores-list");
 var allAnswersEl = document.querySelector("#answer-container");
 var timerEl = document.getElementById("timer");
 var timeLeft
 var currentQuestionIndex = 0;
-var initialsEl = document.querySelector("#initials");
+var initialsInput = document.querySelector("#initials");
 var timeInterval
 var questionArray = [
     {
@@ -116,11 +116,14 @@ function answerCheck(event) {
     }
 }
 
-// hides question area and moves on to the End game page
+// hides question area and moves on to the End game page and saves score in storage
 function questionsOver(){
     questionCardEl.setAttribute("style", "display:none;");
     finishedCardEl.setAttribute("style", "display:flex;");
 }
+// double check this is where we want to store score above?
+// double check this is where we want to store score above?
+// double check this is where we want to store score above?
 
 
 function questionCardPopulate(){
@@ -146,52 +149,62 @@ function questionCardPopulate(){
 }
 
 
+var userScores = [];
 
-//Store initials
+// Append list items to high scores list if any high scores are stored
+function renderHighScores(){
+ //   highScoresListEl.innerHTML = ""; // not needed? don't need to clear the highScoreslist   
+    for (var i = 0; i < userScores.length; i++){
+        var userScore = userScores[i];
+        var li = document.createElement("li");
+        li.textContent = userScore;
+        li.setAttribute("data-index", i);
+        highScoresListEl.appendChild(li);
+    }
+}
+
+// Get stored high score table if available
+function init() {
+    var storedUserScores = JSON.parse(localStorage.getItem("userScores"));
+    if (storedUserScores != null) {
+        userScores = storedUserScores;
+    }
+    renderHighScores();
+}
+
+
+// store high scores
+function storeHighScores() {
+    localStorage.setItem("userScores", JSON.stringify(userScores));
+}
+
 submitInitialsButtonEl.addEventListener("click", function(e){
     e.preventDefault();
-    localStorage.setItem("initials", initialsEl.value) 
-    localStorage.setItem("score", score)
     finishedCardEl.setAttribute("style", "display:none;");
     highScoresCardEl.setAttribute("style", "display:flex;");
+    var userInitials = initialsInput.value.trim();
+    if (userInitials ===""){
+        return;
+    }
+    var newUserScore = userInitials + " " + score;
+    userScores.push(newUserScore);
+    score=0;
+    storeHighScores();
+    renderHighScores();
 })
-
-// // Post initials
-// var postInitialsEl = document.createElement("li");
-// postInitialsEl.textContent = localStorage.getItem("initials")
-// finalScoreEl.appendChild(postInitialsEl)
-
-// // need to store scores and initials
-
-// create 
-// var initialsScores = {
-//     KM: "45",
-//     BB: "33",
-//     JJ: "22",
-// }
-
-// //stringify to store it
-// var initialsScoresString = JSON.stringify(initialsScores);
-
-// localStorage.setItem("userKey", initialsScoresString)
-// var initialsScoresObj = localStorage.getItem("userKey");
-
-// //turn to object so we can use it
-// var initialsScoreNewObj = JSON.parse(initialsScoresObj);
-// highScoresList.textContent = initialsScoreNewObj
-
-
 
 
 //Clear High Scores
 clearHighScoresButtonEl.addEventListener("click", function(){
     localStorage.clear()
+    highScoresListEl.textContent = "";
+
 })
 
 // Go Back
 goBackButtonEl.addEventListener("click", function(){
 location.reload(true);
-} )
+})
 
 // High Score link
 highScoreLinkEl.addEventListener("click", function(){
@@ -199,5 +212,4 @@ highScoreLinkEl.addEventListener("click", function(){
     highScoresCardEl.setAttribute("style", "display:flex;");
 })
 
-
-
+init()

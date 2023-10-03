@@ -338,3 +338,41 @@ function countdown() {
 //     "4. parenthesis",
 //     3, 
 // ];
+
+//////// Storage and highscore backup
+//Store initials
+submitInitialsButtonEl.addEventListener("click", function(e){
+    e.preventDefault();
+    localStorage.setItem("initials", initialsInput.value)
+    localStorage.setItem("finalScore", finalScore.value)
+    finishedCardEl.setAttribute("style", "display:none;");
+    highScoresCardEl.setAttribute("style", "display:flex;");
+   })
+
+// Post score in final score
+var postScoreEl = document.createElement("li");
+postScoreEl.textContent = localStorage.getItem("score")
+finalScoreEl.appendChild(postScoreEl)
+
+
+// create 
+// var initialsScores = {
+//     KM: "45",
+//     BB: "33",
+//     JJ: "22",
+// }
+
+// //stringify to store it
+// var initialsScoresString = JSON.stringify(initialsScores);
+
+// localStorage.setItem("userKey", initialsScoresString)
+// var initialsScoresObj = localStorage.getItem("userKey");
+
+// //turn to object so we can use it
+// var initialsScoreNewObj = JSON.parse(initialsScoresObj);
+// highScoresList.textContent = initialsScoreNewObj
+
+var postInitials = localStorage.getItem("initials");
+var postScore = localStorage.getItem("score");
+
+highScoresListEl.textContent= "Initials: " + postInitials + " Score: "+ postScore;
