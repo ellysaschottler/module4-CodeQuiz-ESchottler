@@ -5,16 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Quiz</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap"
+      rel="stylesheet"/>
 </head>
 <body>
     <header>
-        <div id = "high-scores"></div>
+        <div id = "high-scores-link"><a href="#high-scores">High Scores</a></div>
         <div id = "timer">Timer</div>
+        <div id = "right-wrong">Result</div>
+        <div id = "score">Score</div>
     </header>
-
     <main>
         <div class = "centering">
-            <div class = "question-card" id="starter">
+            <div id="starter">
                 <h2>Coding Quiz Challenge.</h2>
                 <div class = "content">
                     <p>You have 75 seconds to answer these 5 coding questions! </p>
@@ -24,29 +30,34 @@
             </div>
         </div>
         <div class = "centering">
-            <div id="container">
-<!-- Javascript to update questions to here. -->
+            <div id = "question-card">
+                <h2 id="question-here">My question goes here.</h2>
+                <div class = "content" id="answer-container">
+                    <button id="choice-1">1. Answer here. </button>
+                    <button id="choice-2">2. Answer here. </button>
+                    <button id="choice-3">3. Answer here. </button>
+                    <button id="choice-4">4. Answer here. </button>
+                </div>
             </div>
         </div>
         <div class = "centering">
-            <div class = "question-card" id="finished">
+            <div id="finished">
                 <h2>You have completed the Quiz!</h2>
                 <div class = "content">
-                    <p>Your final score is: <div id="final-score"></div>. </p>
-                    <form id="initials">
-                        <label>Enter initials:</label>
-                        <input type="text" id="initials"/>
-                    </form> <button id="submit">Submit</button>
+                    <p>Great Job! Post your initials to the High Scores Page </p>
+                    <form>
+                        Enter initials:<input type="text" id="initials"/>
+                     <button id="submit">Submit</button>
+                    </form>
                 </div>
-                <ul class="right-wrong"></ul>
             </div>
         </div>
         <div class = "centering">
-            <div class = "question-card" id="high-scores">
+            <div id="high-scores-card">
                 <h2>High Scores</h2>
                 <div class = "content">
-                    <ul id="high-scores-list">
-                    <button id ="go-back">Go Back </button> <button id ="clear-high-scores">Clear High Scores</button>
+                    <ul id="high-scores-list"></ul>
+                    <button id ="go-back">Go Back</button> <button id ="clear-high-scores">Clear High Scores</button>
                 </div>
             </div>
         </div>

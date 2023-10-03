@@ -10,7 +10,6 @@ var starterCardEl = document.querySelector("#starter");
 var questionCardEl = document.querySelector("#question-card");
 var finishedCardEl = document.querySelector("#finished");
 var highScoresCardEl = document.querySelector("#high-scores-card");
-var finalScoreEl = document.querySelector("#final-score")
 var highScoreLinkEl = document.querySelector("#high-scores-link");
 var highScoresListEl = document.querySelector("#high-scores-list");
 var allAnswersEl = document.querySelector("#answer-container");
@@ -57,8 +56,7 @@ var questionArray = [
         correct: "3. quotes"}
 ]
 
-//Start the game
-
+//Start the game - show the questions and hide the start information, start the counter
 startButtonEl.addEventListener("click",function(event){
     event.stopPropagation();
     starterCardEl.setAttribute("style", "display:none;");
@@ -68,7 +66,6 @@ startButtonEl.addEventListener("click",function(event){
 }
 )
 // Timer
-
 timerEl.setAttribute("style","color:purple");
 
 function countdown() {
@@ -87,7 +84,6 @@ function countdown() {
 }
 
 //Function to check if the answer is right or wrong and to add points or subtract time accordingly
-
 allAnswersEl.addEventListener("click", answerCheck)
 
 function answerCheck(event) {
@@ -116,16 +112,12 @@ function answerCheck(event) {
     }
 }
 
-// hides question area and moves on to the End game page and saves score in storage
+// hides question area and moves on to the End game page
 function questionsOver(){
     questionCardEl.setAttribute("style", "display:none;");
     finishedCardEl.setAttribute("style", "display:flex;");
 }
-// double check this is where we want to store score above?
-// double check this is where we want to store score above?
-// double check this is where we want to store score above?
-
-
+// Displays the questions and answer options one set at a time
 function questionCardPopulate(){
     var questionHere = document.getElementById("question-here");
     var getQuestionText = questionArray[currentQuestionIndex].question;
@@ -148,12 +140,10 @@ function questionCardPopulate(){
     fourthAnswerHere.textContent = getFourthAnswerText;
 }
 
-
 var userScores = [];
 
-// Append list items to high scores list if any high scores are stored
+// Appends list items to high scores list if any high scores are stored
 function renderHighScores(){
- //   highScoresListEl.innerHTML = ""; // not needed? don't need to clear the highScoreslist   
     for (var i = 0; i < userScores.length; i++){
         var userScore = userScores[i];
         var li = document.createElement("li");
@@ -172,8 +162,7 @@ function init() {
     renderHighScores();
 }
 
-
-// store high scores
+// Store high scores
 function storeHighScores() {
     localStorage.setItem("userScores", JSON.stringify(userScores));
 }
@@ -193,12 +182,10 @@ submitInitialsButtonEl.addEventListener("click", function(e){
     renderHighScores();
 })
 
-
 //Clear High Scores
 clearHighScoresButtonEl.addEventListener("click", function(){
     localStorage.clear()
     highScoresListEl.textContent = "";
-
 })
 
 // Go Back
