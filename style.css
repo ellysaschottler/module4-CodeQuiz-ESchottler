@@ -23,9 +23,9 @@ h2 {
     width: 60%;
     flex-direction: column;
     justify-content:flex-start;
-    background-color:aquamarine;
+    background-color:rgb(186, 213, 219);
     margin:5px;
-    
+    padding:5px;
 }
 
 .content {

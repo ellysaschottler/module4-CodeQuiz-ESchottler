@@ -10,11 +10,12 @@ var starterCardEl = document.querySelector("#starter");
 var questionCardEl = document.querySelector("#question-card");
 var finishedCardEl = document.querySelector("#finished");
 var highScoresCardEl = document.querySelector("#high-scores-card");
-var highScoreEl = document.querySelector("#high-scores")
-var highScoreLinkEl = document.querySelector("#high-scores-link")
+var finalScoreEl = document.querySelector("#final-score")
+var highScoreLinkEl = document.querySelector("#high-scores-link");
+var highScoresList = document.querySelector("#high-scores-list");
 var allAnswersEl = document.querySelector("#answer-container");
 var timerEl = document.getElementById("timer");
-var timeLeft;
+var timeLeft
 var currentQuestionIndex = 0;
 var initialsEl = document.querySelector("#initials");
 var timeInterval
@@ -144,24 +145,47 @@ function questionCardPopulate(){
     fourthAnswerHere.textContent = getFourthAnswerText;
 }
 
+
+
 //Store initials
 submitInitialsButtonEl.addEventListener("click", function(e){
     e.preventDefault();
     localStorage.setItem("initials", initialsEl.value) 
+    localStorage.setItem("score", score)
     finishedCardEl.setAttribute("style", "display:none;");
     highScoresCardEl.setAttribute("style", "display:flex;");
 })
 
-// Post initials
-var postInitialsEl = document.createElement("li");
-    
-postInitialsEl.textContent = localStorage.getItem("initials")
-highScoreEl.appendChild(postInitialsEl)
+// // Post initials
+// var postInitialsEl = document.createElement("li");
+// postInitialsEl.textContent = localStorage.getItem("initials")
+// finalScoreEl.appendChild(postInitialsEl)
+
+// // need to store scores and initials
+
+// create 
+// var initialsScores = {
+//     KM: "45",
+//     BB: "33",
+//     JJ: "22",
+// }
+
+// //stringify to store it
+// var initialsScoresString = JSON.stringify(initialsScores);
+
+// localStorage.setItem("userKey", initialsScoresString)
+// var initialsScoresObj = localStorage.getItem("userKey");
+
+// //turn to object so we can use it
+// var initialsScoreNewObj = JSON.parse(initialsScoresObj);
+// highScoresList.textContent = initialsScoreNewObj
+
+
+
 
 //Clear High Scores
 clearHighScoresButtonEl.addEventListener("click", function(){
     localStorage.clear()
-
 })
 
 // Go Back
@@ -174,3 +198,6 @@ highScoreLinkEl.addEventListener("click", function(){
     starterCardEl.setAttribute("style", "display:none;");
     highScoresCardEl.setAttribute("style", "display:flex;");
 })
+
+
+
