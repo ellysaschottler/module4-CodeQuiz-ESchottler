@@ -12,7 +12,7 @@ N/A
 
 ## Usage
 
-View my portfolio website at: https://ellysaschottler.github.io/module4-CodeQuiz-ESchottler/
+View my Code Quiz website at: https://ellysaschottler.github.io/module4-CodeQuiz-ESchottler/
 
 
 Screenshot of my work: ![Screenshot](/assets/Screenshot-Module-4.png)
